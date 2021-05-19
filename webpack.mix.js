@@ -11,5 +11,10 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('src/js/app.js', 'dist/js')
-   .sass('src/sass/app.scss', 'dist/css');
+require('laravel-mix-polyfill');
+
+mix.js('src/js/app.js', 'dist/js').sass('src/sass/app.scss', 'dist/css').polyfill({
+	enabled: true,
+	useBuiltIns: 'usage',
+	targets: 'firefox 50, IE 11'
+});
